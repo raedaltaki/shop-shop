@@ -9,12 +9,15 @@ import './style.css';
 
 import { useStoreContext } from '../../utils/GlobalState';
 import { useLazyQuery } from '@apollo/react-hooks';
+import { useSelector, useDispatch } from 'react-redux';
 
 const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
 
 const Cart = () => {
 
-    const [state, dispatch] = useStoreContext();
+    // const [state, dispatch] = useStoreContext();
+    const state = useSelector(state => state);
+    const dispatch = useDispatch();
 
     useEffect(() => {
         async function getCart() {
